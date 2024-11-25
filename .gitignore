@@ -4,3 +4,25 @@
 
 # vscode specific ignores
 .vscode/
+
+# Ignore libraryfiles 
+gdextension/bin/*
+
+# Ignore Binaryies
+*.o
+*.os
+*.so
+*.obj
+*.bc
+*.pyc
+*.dblite
+*.pdb
+*.lib
+*.config
+*.creator
+*.creator.user
+*.files
+*.includes
+*.idb
+*.exp
+*.dll

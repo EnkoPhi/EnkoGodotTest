@@ -1,0 +1,18 @@
+
+env = SConscript('godot-cpp/SConstruct')
+
+env.Append(CPPPATH = 'src/')
+
+src = Glob('src/*.cpp')
+
+if env['platform'] == 'windows':
+    libpath = 'bin/{}/libtest{}{}'.format(env['platform'], env['suffix'], env['SHLIBSUFFIX'])
+    sharedLib = env.SharedLibrary(libpath, src)
+    Default(sharedLib)
+    pass
+elif env['platform'] == 'linux':
+    pass
+elif env['platform'] == 'osx':
+    pass
+elif env['platform'] == 'android':
+    pass
