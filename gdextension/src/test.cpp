@@ -46,6 +46,16 @@ void Test::set_testTexture(Ref<ImageTexture> value)
     testTexture = value;
 }
 
+BitField<FLAGS> Test::get_flags()
+{
+    return flags;
+}
+
+void Test::set_flags(BitField<FLAGS> value)
+{
+    flags = value;
+}
+
 void Test::_bind_methods()
 {
     ClassDB::bind_method(D_METHOD("start_test"), &Test::start_test);
@@ -66,7 +76,18 @@ void Test::_bind_methods()
     ClassDB::bind_method(D_METHOD("set_testTexture", "value"), &Test::set_testTexture);
     ADD_PROPERTY(PropertyInfo(Variant::OBJECT, "testTexture", PROPERTY_HINT_RESOURCE_TYPE, "Texture2D"), "set_testTexture", "get_testTexture");
 
+    ClassDB::bind_method(D_METHOD("get_flags"), &Test::get_flags);
+    ClassDB::bind_method(D_METHOD("set_flags", "value"), &Test::set_flags);
+    ADD_PROPERTY(PropertyInfo(Variant::INT, "flags", PROPERTY_HINT_FLAGS, "Flag None,Flag 1,Flag 2,Flag 3,Flag 4"), "set_flags", "get_flags");
+
     BIND_ENUM_CONSTANT(TEST_ENUM_1);
     BIND_ENUM_CONSTANT(TEST_ENUM_2);
     BIND_ENUM_CONSTANT(TEST_ENUM_3);
+
+    BIND_BITFIELD_FLAG(FLAG_NONE);
+    BIND_BITFIELD_FLAG(FLAG_1);
+    BIND_BITFIELD_FLAG(FLAG_2);
+    BIND_BITFIELD_FLAG(FLAG_3);
+    BIND_BITFIELD_FLAG(FLAG_4);
+
 }
