@@ -29,6 +29,8 @@ class Test : public Node3D
 public:
     void start_test();
 
+    void start();
+
     int get_testI();
     void set_testI(int value);
 
@@ -44,6 +46,7 @@ public:
     BitField<FLAGS> get_flags();
     void set_flags(BitField<FLAGS> value);
 
+    void _ready() override;
 protected:
     static void _bind_methods();
 

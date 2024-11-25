@@ -6,6 +6,16 @@ void Test::start_test()
     UtilityFunctions::print("Hello from Test::start_test()");
 }
 
+void Test::_ready()
+{
+    start();
+}
+
+void Test::start()
+{
+    emit_signal("test_signal", "Hello from Test::start() via signal");
+}
+
 int Test::get_testI()
 {
     return testI;
@@ -79,6 +89,8 @@ void Test::_bind_methods()
     ClassDB::bind_method(D_METHOD("get_flags"), &Test::get_flags);
     ClassDB::bind_method(D_METHOD("set_flags", "value"), &Test::set_flags);
     ADD_PROPERTY(PropertyInfo(Variant::INT, "flags", PROPERTY_HINT_FLAGS, "Flag None,Flag 1,Flag 2,Flag 3,Flag 4"), "set_flags", "get_flags");
+
+    ADD_SIGNAL(MethodInfo("test_signal"), PropertyInfo(Variant::STRING, "message"));
 
     BIND_ENUM_CONSTANT(TEST_ENUM_1);
     BIND_ENUM_CONSTANT(TEST_ENUM_2);
