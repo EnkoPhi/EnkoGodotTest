@@ -9,10 +9,10 @@ class Test: public Node3D {
     GDCLASS(Test, Node3D);
 
 public:
-    void _ready();
+    void start_test();
 
 protected:
-    static void _bind_methods(){};
+    static void _bind_methods();
 };
 
 #endif // TEST_H
