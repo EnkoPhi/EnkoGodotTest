@@ -6,6 +6,12 @@
 
 using namespace godot;
 
+enum TestEnum{
+    TEST_ENUM_1 = 0,
+    TEST_ENUM_2 = 5,
+    TEST_ENUM_3 = 10
+};
+
 class Test: public Node3D {
     GDCLASS(Test, Node3D);
 
@@ -33,5 +39,7 @@ private:
     String testS = "Hello, World!";
     Ref<ImageTexture> testTexture;
 };
+
+VARIANT_ENUM_CAST(TestEnum);
 
 #endif // TEST_H

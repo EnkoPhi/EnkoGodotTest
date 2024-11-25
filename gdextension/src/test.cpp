@@ -65,4 +65,8 @@ void Test::_bind_methods()
     ClassDB::bind_method(D_METHOD("get_testTexture"), &Test::get_testTexture);
     ClassDB::bind_method(D_METHOD("set_testTexture", "value"), &Test::set_testTexture);
     ADD_PROPERTY(PropertyInfo(Variant::OBJECT, "testTexture", PROPERTY_HINT_RESOURCE_TYPE, "Texture2D"), "set_testTexture", "get_testTexture");
+
+    BIND_ENUM_CONSTANT(TEST_ENUM_1);
+    BIND_ENUM_CONSTANT(TEST_ENUM_2);
+    BIND_ENUM_CONSTANT(TEST_ENUM_3);
 }
