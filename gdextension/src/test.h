@@ -8,6 +8,9 @@ using namespace godot;
 class Test: public Node3D {
     GDCLASS(Test, Node3D);
 
+public:
+    void _ready();
+
 protected:
     static void _bind_methods(){};
 };
