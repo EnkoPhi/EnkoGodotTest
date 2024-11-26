@@ -4,18 +4,15 @@
 
 void Test::start()
 {
-    auto childCount = get_child_count();
-    if (childCount < 1)
+    auto children = get_children();
+    for (auto i = 0; i < children.size(); i++)
     {
-        UtilityFunctions::print("No child found");
-        return;
-    }
-    auto child = get_child(0);
-    if(child->is_class("Timer")){
+        auto child = children[i];
         auto timer = Object::cast_to<Timer>(child);
-        UtilityFunctions::print("Timer found", timer);
-    }else{
-        UtilityFunctions::print("First Child is not a Timer");
+        if (timer)
+        {
+            UtilityFunctions::prints("Timer found, the index is ", i);
+        }
     }
 }
 

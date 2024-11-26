@@ -7,4 +7,10 @@
 [node name="Test" type="Test" parent="."]
 script = ExtResource("1_6uiog")
 
+[node name="Node" type="Node" parent="Test"]
+
 [node name="Timer" type="Timer" parent="Test"]
+
+[node name="Node3D" type="Node3D" parent="Test"]
+
+[node name="Timer2" type="Timer" parent="Test"]
