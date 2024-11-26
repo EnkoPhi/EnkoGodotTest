@@ -90,7 +90,7 @@ void Test::_bind_methods()
     ClassDB::bind_method(D_METHOD("set_flags", "value"), &Test::set_flags);
     ADD_PROPERTY(PropertyInfo(Variant::INT, "flags", PROPERTY_HINT_FLAGS, "Flag None,Flag 1,Flag 2,Flag 3,Flag 4"), "set_flags", "get_flags");
 
-    ADD_SIGNAL(MethodInfo("test_signal"), PropertyInfo(Variant::STRING, "message"));
+    ADD_SIGNAL(MethodInfo("test_signal", PropertyInfo(Variant::STRING, "message")));
 
     BIND_ENUM_CONSTANT(TEST_ENUM_1);
     BIND_ENUM_CONSTANT(TEST_ENUM_2);
