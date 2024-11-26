@@ -1,20 +1,42 @@
-[gd_scene load_steps=3 format=3 uid="uid://b5ebea5wv5xgr"]
+[gd_scene load_steps=6 format=3 uid="uid://b5ebea5wv5xgr"]
 
 [ext_resource type="Script" path="res://Test.cs" id="1_th6w7"]
+[ext_resource type="PackedScene" uid="uid://dyvcmp4o43g4y" path="res://goldcube.blend" id="2_v4o3n"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_ho5xr"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_3u1sg"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_edr4p"]
+size = Vector3(12, 2, 12)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xlkto"]
+size = Vector3(12, 2, 12)
 
 [node name="Node" type="Node"]
 
-[node name="Node" type="Node" parent="." node_paths=PackedStringArray("node")]
+[node name="Node" type="Node" parent="."]
 script = ExtResource("1_th6w7")
-node = NodePath("MeshInstance3D")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node"]
-mesh = SubResource("SphereMesh_ho5xr")
+[node name="RigidBody3D" type="RigidBody3D" parent="Node"]
+transform = Transform3D(0.965926, 0.224144, 0.12941, -0.258819, 0.836516, 0.482963, 0, -0.5, 0.866025, 0, 3, 0)
+
+[node name="goldcube" parent="Node/RigidBody3D" instance=ExtResource("2_v4o3n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/RigidBody3D"]
+shape = SubResource("BoxShape3D_3u1sg")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 5, 6)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.433013, -0.771811, 0.465625, 0.5, 0.224144, 0.836516, -0.75, 0.595035, 0.288849, 0, 3, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_edr4p")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_xlkto")
