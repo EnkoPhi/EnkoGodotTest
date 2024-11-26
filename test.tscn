@@ -7,10 +7,10 @@
 size = Vector3(2, 2, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_edr4p"]
-size = Vector3(12, 2, 12)
+size = Vector3(12, 1, 12)
 
 [sub_resource type="BoxMesh" id="BoxMesh_xlkto"]
-size = Vector3(12, 2, 12)
+size = Vector3(12, 1, 12)
 
 [node name="Node" type="Node"]
 
@@ -33,10 +33,61 @@ transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 
 transform = Transform3D(-0.433013, -0.771811, 0.465625, 0.5, 0.224144, 0.836516, -0.75, 0.595035, 0.288849, 0, 3, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("BoxShape3D_edr4p")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
 mesh = SubResource("BoxMesh_xlkto")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_right = 93.0
+offset_bottom = 23.0
+text = "Hello, left top"
+
+[node name="Label2" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -93.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "Hello, right top"
+horizontal_alignment = 2
+
+[node name="Label3" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Hello,right bottom"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Label4" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+offset_right = 143.0
+grow_vertical = 0
+text = "Hello,left bottom"
+vertical_alignment = 2
