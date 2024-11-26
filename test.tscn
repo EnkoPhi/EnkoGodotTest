@@ -1,16 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://b5ebea5wv5xgr"]
+[gd_scene load_steps=3 format=3 uid="uid://b5ebea5wv5xgr"]
 
-[ext_resource type="Script" path="res://test.gd" id="1_6uiog"]
+[ext_resource type="Script" path="res://Test.cs" id="1_th6w7"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_ho5xr"]
 
 [node name="Node" type="Node"]
 
-[node name="Test" type="Test" parent="."]
-script = ExtResource("1_6uiog")
+[node name="Node" type="Node" parent="." node_paths=PackedStringArray("node")]
+script = ExtResource("1_th6w7")
+node = NodePath("MeshInstance3D")
 
-[node name="Node" type="Node" parent="Test"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node"]
+mesh = SubResource("SphereMesh_ho5xr")
 
-[node name="Timer" type="Timer" parent="Test"]
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 5, 6)
 
-[node name="Node3D" type="Node3D" parent="Test"]
-
-[node name="Timer2" type="Timer" parent="Test"]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.433013, -0.771811, 0.465625, 0.5, 0.224144, 0.836516, -0.75, 0.595035, 0.288849, 0, 3, 0)

@@ -5,6 +5,9 @@
 # vscode specific ignores
 .vscode/
 
+# Jetbrains specific ignores
+.idea/
+
 # Ignore libraryfiles 
 gdextension/bin/*
 
