@@ -5,7 +5,6 @@
 [node name="Node" type="Node"]
 
 [node name="Test" type="Test" parent="."]
-flags = 1
 script = ExtResource("1_6uiog")
 
-[connection signal="test_signal" from="Test" to="Test" method="_on_test_signal"]
+[node name="Timer" type="Timer" parent="Test"]

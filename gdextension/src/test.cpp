@@ -1,105 +1,25 @@
 #include "test.h"
 #include <godot_cpp/variant/utility_functions.hpp>
-
-void Test::start_test()
-{
-    UtilityFunctions::print("Hello from Test::start_test()");
-}
-
-void Test::_ready()
-{
-    start();
-}
+#include <godot_cpp/classes/timer.hpp>
 
 void Test::start()
 {
-    emit_signal("test_signal", "Hello from Test::start() via signal");
-}
-
-int Test::get_testI()
-{
-    return testI;
-}
-
-void Test::set_testI(int value)
-{
-    testI = value;
-}
-
-float Test::get_testF()
-{
-    return testF;
-}
-
-void Test::set_testF(float value)
-{
-    testF = value;
-}
-
-String Test::get_testS()
-{
-    return testS;
-}
-
-void Test::set_testS(String value)
-{
-    testS = value;
-}
-
-Ref<ImageTexture> Test::get_testTexture()
-{
-    return testTexture;
-}
-
-void Test::set_testTexture(Ref<ImageTexture> value)
-{
-    testTexture = value;
-}
-
-BitField<FLAGS> Test::get_flags()
-{
-    return flags;
-}
-
-void Test::set_flags(BitField<FLAGS> value)
-{
-    flags = value;
+    auto childCount = get_child_count();
+    if (childCount < 1)
+    {
+        UtilityFunctions::print("No child found");
+        return;
+    }
+    auto child = get_child(0);
+    if(child->is_class("Timer")){
+        auto timer = Object::cast_to<Timer>(child);
+        UtilityFunctions::print("Timer found", timer);
+    }else{
+        UtilityFunctions::print("First Child is not a Timer");
+    }
 }
 
 void Test::_bind_methods()
 {
-    ClassDB::bind_method(D_METHOD("start_test"), &Test::start_test);
-
-    ClassDB::bind_method(D_METHOD("get_testI"), &Test::get_testI);
-    ClassDB::bind_method(D_METHOD("set_testI", "value"), &Test::set_testI);
-    ADD_PROPERTY(PropertyInfo(Variant::INT, "testI"), "set_testI", "get_testI");
-
-    ClassDB::bind_method(D_METHOD("get_testF"), &Test::get_testF);
-    ClassDB::bind_method(D_METHOD("set_testF", "value"), &Test::set_testF);
-    ADD_PROPERTY(PropertyInfo(Variant::FLOAT, "testF"), "set_testF", "get_testF");
-
-    ClassDB::bind_method(D_METHOD("get_testS"), &Test::get_testS);
-    ClassDB::bind_method(D_METHOD("set_testS", "value"), &Test::set_testS);
-    ADD_PROPERTY(PropertyInfo(Variant::STRING, "testS"), "set_testS", "get_testS");
-
-    ClassDB::bind_method(D_METHOD("get_testTexture"), &Test::get_testTexture);
-    ClassDB::bind_method(D_METHOD("set_testTexture", "value"), &Test::set_testTexture);
-    ADD_PROPERTY(PropertyInfo(Variant::OBJECT, "testTexture", PROPERTY_HINT_RESOURCE_TYPE, "Texture2D"), "set_testTexture", "get_testTexture");
-
-    ClassDB::bind_method(D_METHOD("get_flags"), &Test::get_flags);
-    ClassDB::bind_method(D_METHOD("set_flags", "value"), &Test::set_flags);
-    ADD_PROPERTY(PropertyInfo(Variant::INT, "flags", PROPERTY_HINT_FLAGS, "Flag None,Flag 1,Flag 2,Flag 3,Flag 4"), "set_flags", "get_flags");
-
-    ADD_SIGNAL(MethodInfo("test_signal", PropertyInfo(Variant::STRING, "message")));
-
-    BIND_ENUM_CONSTANT(TEST_ENUM_1);
-    BIND_ENUM_CONSTANT(TEST_ENUM_2);
-    BIND_ENUM_CONSTANT(TEST_ENUM_3);
-
-    BIND_BITFIELD_FLAG(FLAG_NONE);
-    BIND_BITFIELD_FLAG(FLAG_1);
-    BIND_BITFIELD_FLAG(FLAG_2);
-    BIND_BITFIELD_FLAG(FLAG_3);
-    BIND_BITFIELD_FLAG(FLAG_4);
-
+    ClassDB::bind_method(D_METHOD("start"), &Test::start);
 }
