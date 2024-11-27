@@ -1,9 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://b5ebea5wv5xgr"]
+[gd_scene load_steps=11 format=3 uid="uid://b5ebea5wv5xgr"]
 
 [ext_resource type="Script" path="res://Test.cs" id="1_th6w7"]
 [ext_resource type="PackedScene" uid="uid://dyvcmp4o43g4y" path="res://goldcube.blend" id="2_v4o3n"]
 [ext_resource type="Theme" uid="uid://cltwt0q2b6def" path="res://theme/defaultTheme.tres" id="3_04ujg"]
-[ext_resource type="Script" path="res://ButtonScaleNode.cs" id="4_rnbsy"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_67q6h"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -110,37 +109,33 @@ vertical_alignment = 1
 layout_mode = 2
 text = "NEW_GAME"
 
-[node name="ButtonScaleNode" type="Node" parent="Control/PanelContainer/VBoxContainer/NewGame"]
-script = ExtResource("4_rnbsy")
-hoverScale = Vector2(1.1, 1.1)
-scaleDuration = 0.2
+[node name="ButtonScale" type="ButtonScale" parent="Control/PanelContainer/VBoxContainer/NewGame"]
+scale = Vector2(1.1, 1.1)
+animation_duration = 0.2
 
 [node name="Continue" type="Button" parent="Control/PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 5
 text = "CONTINUE"
 
-[node name="ButtonScaleNode" type="Node" parent="Control/PanelContainer/VBoxContainer/Continue"]
-script = ExtResource("4_rnbsy")
-hoverScale = Vector2(1.1, 1.1)
-scaleDuration = 0.2
+[node name="ButtonScale" type="ButtonScale" parent="Control/PanelContainer/VBoxContainer/Continue"]
+scale = Vector2(1.1, 1.1)
+animation_duration = 0.2
 
 [node name="Setting" type="Button" parent="Control/PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 5
 text = "SETTING"
 
-[node name="ButtonScaleNode" type="Node" parent="Control/PanelContainer/VBoxContainer/Setting"]
-script = ExtResource("4_rnbsy")
-hoverScale = Vector2(1.1, 1.1)
-scaleDuration = 0.2
+[node name="ButtonScale" type="ButtonScale" parent="Control/PanelContainer/VBoxContainer/Setting"]
+scale = Vector2(1.1, 1.1)
+animation_duration = 0.2
 
 [node name="Quit" type="Button" parent="Control/PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 5
 text = "QUIT"
 
-[node name="ButtonScaleNode" type="Node" parent="Control/PanelContainer/VBoxContainer/Quit"]
-script = ExtResource("4_rnbsy")
-hoverScale = Vector2(1.1, 1.1)
-scaleDuration = 0.2
+[node name="ButtonScale" type="ButtonScale" parent="Control/PanelContainer/VBoxContainer/Quit"]
+scale = Vector2(1.1, 1.1)
+animation_duration = 0.2

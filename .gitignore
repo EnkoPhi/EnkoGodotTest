@@ -30,3 +30,6 @@ gdextension/bin/*
 *.idb
 *.exp
 *.dll
+
+# Ignore generated files
+*.gen.*

@@ -4,6 +4,7 @@
 #include <godot_cpp/core/defs.hpp>
 #include <godot_cpp/godot.hpp>
 #include "test.h"
+#include "ButtonScale.h"
 
 using namespace godot;
 
@@ -13,6 +14,7 @@ void initialize_gdextension_types(ModuleInitializationLevel p_level)
 		return;
 	}
     ClassDB::register_class<Test>();
+	ClassDB::register_class<ButtonScale>();
 }
 
 void uninitialize_gdextension_types(ModuleInitializationLevel p_level) {

@@ -5,6 +5,13 @@ env.Append(CPPPATH = 'src/')
 
 src = Glob('src/*.cpp')
 
+if env["target"] in ["editor", "template_debug"]:
+    try:
+        doc_data = env.GodotCPPDocData("src/gen/doc_data.gen.cpp", source=Glob("doc_classes/*.xml"))
+        src.append(doc_data)
+    except AttributeError:
+        print("Not including class reference as we're targeting a pre-4.3 baseline.")
+
 if env['platform'] == 'windows':
     libpath = 'bin/{}/libtest{}{}'.format(env['platform'], env['suffix'], env['SHLIBSUFFIX'])
     sharedLib = env.SharedLibrary(libpath, src)

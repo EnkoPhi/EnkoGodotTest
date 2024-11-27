@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="ButtonScale" inherits="Node">
+    <brief_description>
+        A node component that adds hover scale animation to buttons.
+    </brief_description>
+    <description>
+        ButtonScale is a node component that, when added as a child of a Button node, provides scaling animation effects on mouse hover.
+        It supports customizable scale ratio, animation duration, and transition effects.
+    </description>
+    <tutorials>
+    </tutorials>
+    <methods>
+    </methods>
+    <members>
+        <member name="scale" type="Vector2" setter="set_scale" getter="get_scale" default="Vector2(1, 1)">
+            The scale ratio to apply when the button is hovered.
+        </member>
+        <member name="from_center" type="bool" setter="set_from_center" getter="get_from_center" default="true">
+            Whether to scale the button from its center point.
+        </member>
+        <member name="use_tween" type="bool" setter="set_use_tween" getter="get_use_tween" default="true">
+            Whether to use tween animation for scaling.
+        </member>
+        <member name="animation_duration" type="float" setter="set_animation_duration" getter="get_animation_duration" default="0.2">
+            Duration of the scaling animation in seconds.
+        </member>
+        <member name="transition_type" type="Tween.TransitionType" setter="set_transition_type" getter="get_transition_type" enum="Tween.TransitionType" default="0">
+            The type of transition for the animation.
+            Available options: Linear, Sine, Quint, Quart, Quad, Expo, Elastic, Cubic, Circ, Bounce, Back, Spring
+            See [enum TransitionType] for detail.
+        </member>
+        <member name="ease_type" type="Tween.EaseType" setter="set_ease_type" getter="get_ease_type" enum="Tween.EaseType" default="1">
+            The easing type for the animation.
+            Available options: In, Out, InOut, OutIn
+        </member>
+    </members>
+    <constants>
+    </constants>
+</class>
