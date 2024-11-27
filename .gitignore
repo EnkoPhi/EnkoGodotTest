@@ -7,6 +7,7 @@
 
 # Jetbrains specific ignores
 .idea/
+*.DotSettings.user
 
 # Ignore libraryfiles 
 gdextension/bin/*

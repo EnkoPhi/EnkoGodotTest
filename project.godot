@@ -18,6 +18,10 @@ config/icon="res://icon.svg"
 
 project/assembly_name="test"
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://translation.csv", "res://translation.en.translation", "res://translation.jp.translation", "res://translation.zh.translation")
+
 [rendering]
 
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)

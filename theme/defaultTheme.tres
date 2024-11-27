@@ -1,0 +1,33 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://cltwt0q2b6def"]
+
+[ext_resource type="FontFile" uid="uid://b03246eup8ju6" path="res://font/DingTalk JinBuTi.ttf" id="1_bkga4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lfbtn"]
+bg_color = Color(0.73, 0.644833, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7jbjm"]
+bg_color = Color(0.73, 0.644833, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u7dnn"]
+content_margin_left = 15.0
+content_margin_top = 15.0
+content_margin_right = 15.0
+content_margin_bottom = 10.0
+bg_color = Color(0, 0, 0, 0.784314)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[resource]
+default_font = ExtResource("1_bkga4")
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/styles/focus = SubResource("StyleBoxFlat_lfbtn")
+Button/styles/hover = SubResource("StyleBoxFlat_lfbtn")
+Button/styles/hover_mirrored = SubResource("StyleBoxFlat_lfbtn")
+Button/styles/pressed = SubResource("StyleBoxFlat_7jbjm")
+Button/styles/pressed_mirrored = SubResource("StyleBoxFlat_7jbjm")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_u7dnn")

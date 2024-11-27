@@ -1,7 +1,27 @@
-[gd_scene load_steps=6 format=3 uid="uid://b5ebea5wv5xgr"]
+[gd_scene load_steps=12 format=3 uid="uid://b5ebea5wv5xgr"]
 
 [ext_resource type="Script" path="res://Test.cs" id="1_th6w7"]
 [ext_resource type="PackedScene" uid="uid://dyvcmp4o43g4y" path="res://goldcube.blend" id="2_v4o3n"]
+[ext_resource type="Theme" uid="uid://cltwt0q2b6def" path="res://theme/defaultTheme.tres" id="3_04ujg"]
+[ext_resource type="Script" path="res://ButtonScaleNode.cs" id="4_rnbsy"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_67q6h"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_srg47"]
+sky_material = SubResource("ProceduralSkyMaterial_67q6h")
+
+[sub_resource type="Environment" id="Environment_7eg4s"]
+background_mode = 2
+sky = SubResource("Sky_srg47")
+sky_custom_fov = 120.0
+ambient_light_source = 3
+reflected_light_source = 2
+tonemap_mode = 2
+ssao_enabled = true
+sdfgi_enabled = true
+glow_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3u1sg"]
 size = Vector3(2, 2, 2)
@@ -12,7 +32,13 @@ size = Vector3(12, 1, 12)
 [sub_resource type="BoxMesh" id="BoxMesh_xlkto"]
 size = Vector3(12, 1, 12)
 
+[sub_resource type="LabelSettings" id="LabelSettings_ua6pt"]
+font_size = 24
+
 [node name="Node" type="Node"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_7eg4s")
 
 [node name="Node" type="Node" parent="."]
 script = ExtResource("1_th6w7")
@@ -32,13 +58,13 @@ transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.433013, -0.771811, 0.465625, 0.5, 0.224144, 0.836516, -0.75, 0.595035, 0.288849, 0, 3, 0)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="Ground" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
 shape = SubResource("BoxShape3D_edr4p")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
 mesh = SubResource("BoxMesh_xlkto")
 
 [node name="Control" type="Control" parent="."]
@@ -48,46 +74,73 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_04ujg")
 
-[node name="Label" type="Label" parent="Control"]
-layout_mode = 0
-offset_right = 93.0
-offset_bottom = 23.0
-text = "Hello, left top"
-
-[node name="Label2" type="Label" parent="Control"]
+[node name="PanelContainer" type="PanelContainer" parent="Control"]
+clip_contents = true
+layout_direction = 1
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -93.0
-offset_bottom = 23.0
-grow_horizontal = 0
-text = "Hello, right top"
-horizontal_alignment = 2
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.5
+offset_top = -87.0
+offset_right = 73.5
+offset_bottom = 87.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Label3" type="Label" parent="Control"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -23.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "Hello,right bottom"
-horizontal_alignment = 2
-vertical_alignment = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/PanelContainer"]
+layout_direction = 1
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+alignment = 1
 
-[node name="Label4" type="Label" parent="Control"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -23.0
-offset_right = 143.0
-grow_vertical = 0
-text = "Hello,left bottom"
-vertical_alignment = 2
+[node name="Label" type="Label" parent="Control/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "MAIN_MENU"
+label_settings = SubResource("LabelSettings_ua6pt")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NewGame" type="Button" parent="Control/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "NEW_GAME"
+
+[node name="ButtonScaleNode" type="Node" parent="Control/PanelContainer/VBoxContainer/NewGame"]
+script = ExtResource("4_rnbsy")
+hoverScale = Vector2(1.1, 1.1)
+scaleDuration = 0.2
+
+[node name="Continue" type="Button" parent="Control/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+text = "CONTINUE"
+
+[node name="ButtonScaleNode" type="Node" parent="Control/PanelContainer/VBoxContainer/Continue"]
+script = ExtResource("4_rnbsy")
+hoverScale = Vector2(1.1, 1.1)
+scaleDuration = 0.2
+
+[node name="Setting" type="Button" parent="Control/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+text = "SETTING"
+
+[node name="ButtonScaleNode" type="Node" parent="Control/PanelContainer/VBoxContainer/Setting"]
+script = ExtResource("4_rnbsy")
+hoverScale = Vector2(1.1, 1.1)
+scaleDuration = 0.2
+
+[node name="Quit" type="Button" parent="Control/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+text = "QUIT"
+
+[node name="ButtonScaleNode" type="Node" parent="Control/PanelContainer/VBoxContainer/Quit"]
+script = ExtResource("4_rnbsy")
+hoverScale = Vector2(1.1, 1.1)
+scaleDuration = 0.2
