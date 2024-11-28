@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://cltwt0q2b6def"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://cltwt0q2b6def"]
 
 [ext_resource type="FontFile" uid="uid://b03246eup8ju6" path="res://font/DingTalk JinBuTi.ttf" id="1_bkga4"]
 
@@ -7,6 +7,9 @@ bg_color = Color(0.73, 0.644833, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7jbjm"]
 bg_color = Color(0.73, 0.644833, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ttqmm"]
+bg_color = Color(0.459122, 0.632968, 0.684273, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u7dnn"]
 content_margin_left = 15.0
@@ -30,4 +33,5 @@ Button/styles/hover = SubResource("StyleBoxFlat_lfbtn")
 Button/styles/hover_mirrored = SubResource("StyleBoxFlat_lfbtn")
 Button/styles/pressed = SubResource("StyleBoxFlat_7jbjm")
 Button/styles/pressed_mirrored = SubResource("StyleBoxFlat_7jbjm")
+Panel/styles/panel = SubResource("StyleBoxFlat_ttqmm")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_u7dnn")

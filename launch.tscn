@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5ebea5wv5xgr"]
+
+[ext_resource type="Theme" uid="uid://cltwt0q2b6def" path="res://theme/defaultTheme.tres" id="3_wq2wp"]
+[ext_resource type="PackedScene" uid="uid://c7yi3cga4ogny" path="res://ui/main_menu.tscn" id="4_0ovmy"]
+
+[node name="Node" type="Node"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_wq2wp")
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainMenu" parent="Control" instance=ExtResource("4_0ovmy")]
+layout_mode = 1
+offset_left = -88.5
+offset_top = -105.5
+offset_right = 88.5
+offset_bottom = 105.5
