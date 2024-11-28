@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://c7yi3cga4ogny"]
+[gd_scene load_steps=4 format=3 uid="uid://c7yi3cga4ogny"]
 
-[ext_resource type="Script" path="res://MainMenu.cs" id="1_pvmac"]
+[ext_resource type="Script" path="res://Script/MainMenu.cs" id="1_14fti"]
+[ext_resource type="PackedScene" uid="uid://b4b6eob8eg5ln" path="res://game.tscn" id="2_6lp5t"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ua6pt"]
 font_size = 24
@@ -19,11 +20,12 @@ offset_right = 73.5
 offset_bottom = 99.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_pvmac")
+script = ExtResource("1_14fti")
 newGameButton = NodePath("VBoxContainer/NewGame")
 loadGameButton = NodePath("VBoxContainer/Continue")
 settingsButton = NodePath("VBoxContainer/Setting")
 quitButton = NodePath("VBoxContainer/Quit")
+gameScene = ExtResource("2_6lp5t")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_direction = 1

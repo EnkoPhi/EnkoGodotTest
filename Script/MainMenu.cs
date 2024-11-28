@@ -1,13 +1,15 @@
 ﻿using Godot;
+using test.Script.Core;
 
-namespace test;
+namespace test.Script;
 
-public partial class MainMenu : Control
+public partial class MainMenu : WindowBase
 {
     [Export] public BaseButton newGameButton;
     [Export] public BaseButton loadGameButton;
     [Export] public BaseButton settingsButton;
     [Export] public BaseButton quitButton;
+    [Export] public PackedScene gameScene;
 
     public override void _Ready()
     {
@@ -30,7 +32,7 @@ public partial class MainMenu : Control
     private void OnNewGameButtonPressed()
     {
         // Load the game scene
-        GetTree().ChangeSceneToFile("res://Game.tscn");
+        GetTree().ChangeSceneToPacked(gameScene);
         // Destroy this
         QueueFree();
     }

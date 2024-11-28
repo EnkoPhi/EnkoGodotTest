@@ -1,6 +1,5 @@
-[gd_scene load_steps=9 format=3 uid="uid://b4b6eob8eg5ln"]
+[gd_scene load_steps=8 format=3 uid="uid://b4b6eob8eg5ln"]
 
-[ext_resource type="Script" path="res://Test.cs" id="1_f2iob"]
 [ext_resource type="PackedScene" uid="uid://dyvcmp4o43g4y" path="res://goldcube.blend" id="2_phqey"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_67q6h"]
@@ -35,16 +34,13 @@ size = Vector3(12, 1, 12)
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_7eg4s")
 
-[node name="Node" type="Node" parent="."]
-script = ExtResource("1_f2iob")
-
-[node name="RigidBody3D" type="RigidBody3D" parent="Node"]
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
 transform = Transform3D(0.965926, 0.224144, 0.12941, -0.258819, 0.836516, 0.482963, 0, -0.5, 0.866025, 0, 3, 0)
 
-[node name="goldcube" parent="Node/RigidBody3D" instance=ExtResource("2_phqey")]
+[node name="goldcube" parent="RigidBody3D" instance=ExtResource("2_phqey")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/RigidBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
 shape = SubResource("BoxShape3D_3u1sg")
 
 [node name="Camera3D" type="Camera3D" parent="."]
